@@ -1,0 +1,29 @@
+<nomePersonagem> ... </nomePersonagem>
+<span id="nomePersonagem"> ... </span>
+
+
+<script>
+
+async function getData() {
+  const url = "https://dragonball-api.com/api/characters/39";
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+
+    const json = await response.json();
+    console.log(json);
+    console.log(json.name);
+    document.getElementById('nomePersonagem').innerText = json.name;
+
+
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
+getData(); // executa a função
+
+
+</script>
